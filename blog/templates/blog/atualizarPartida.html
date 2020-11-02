@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="span6">
+    <h3>Atualizar partida de {{partida.equipe1}} vs {{partida.equipe2}}</h3>
+    <hr/>
+
+    <div style="display: flex; justify-content: center;">
+    <div class="border-caixa">
+        <!-- formulario de Postagem -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="control-group">
+
+            <div class="controls" style='margin-bottom: 15px;'>
+                <span style='margin-right: 3px;'>{{partida.equipe1}}</span> 
+                <input class="input-small" name='placar1' type="number" value="{{partida.placar1}}"/>
+                <span style='color: #ccc;'> - </span> 
+                <input class="input-small" name='placar2' type="number" value="{{partida.placar2}}"/>
+                <span style='margin-left: 3px;'>{{partida.equipe2}}</span> 
+            </div>
+
+            <div class="login-actions">
+                <span class="login-checkbox">
+                    <input name="concluido" id="Field" class="field login-checkbox" 
+                    type="checkbox" {% if partida.concluido %}checked{% endif %} value="true"/>
+                    <label class="choice" for="Field">Concluido</label>
+                    {% comment %} encerrado {% endcomment %}
+				</span>
+                
+                <br/>
+                <br/>
+                <a class="btn-signin btn" href="{% url 'blog:partidas' %}">Cancelar</a>
+				<input name="submit" class="btn-signin btn btn-primary" type="submit" value="Atualizar"/>
+			</div>
+        </form>
+    </div>
+    </div>     
+</div>
+{% endblock content %}

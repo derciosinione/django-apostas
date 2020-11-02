@@ -1,0 +1,81 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="span9">
+<div class="row-fluid">
+    <div class="span12 box">
+        <div class="box-header"><h3><i class="icon-play"></i> Minhas Apostas</h3></div>
+        <div class="box-content">
+            <div class="content-inner">
+                <div class="marg20-btm">
+                    Total de apostas <span class="badge badge-inverse">{{apostas|length}}</span>
+                    <form class="form-inline pull-right">
+                        <input type="text" placeholder="Pesquisar aposta">
+                        <input class="btn" type="submit" value="Search">
+                    </form>
+                </div>
+                
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ID. Partida</th>
+                            <th>Partida</th>
+                            <th>Resultado Final</th>
+                            <th>Meu Resultado</th>
+                            <th>Data da partida</th>
+                            <th>Estado da partida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% comment %} Mostrando a apostas cadastrados {% endcomment %}
+                {% if apostas %}
+                    {% for aposta in apostas %}   
+                        <tr>
+                            <td><p>{{ aposta.pk }}</p></td>
+                            <td><p>{{ aposta.partida.pk }}</p></td>
+                            <td><p>{{ aposta.partida.equipe1 }} vs {{ aposta.partida.equipe2 }}</p></td>
+                            <td><p>{{ aposta.partida.placar1 }} - {{ aposta.partida.placar2 }}</p></td>
+                            <td><p>{{ aposta.placar1 }} - {{ aposta.placar2 }}</p></td>
+                            <td><p>{{ aposta.partida.data_partida }}</p></td>
+                            {% if  aposta.partida.concluido %}
+                                <td><span class="label label-success">Concuída</span></td>
+                            {% else %}
+                                <td><span class="label label-important">Pendente</span></td>                        
+                            {% endif %}
+                        </tr>
+                {% endfor %}
+                {% endif %}
+                    </tbody>
+                </table>
+                
+                {% comment %} Paginacao {% endcomment %}
+    <!-- Paginação -->
+    <div class="col-md-10 mb-4">
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info" href="?page=1">Primeiro</a>
+            <a class="btn btn-outline-info" href="?page={{ page_obj.previous_page_number }}">←</a>
+        {% endif %}        
+ 
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num <  page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info" href="?page={{ page_obj.next_page_number }}">→</a>
+            <a class="btn btn-outline-info" href="?page={{ page_obj.paginator.num_pages }}">Último</a>
+        {% endif %}        
+        
+    {% endif %}
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

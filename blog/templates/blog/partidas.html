@@ -1,0 +1,101 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+<div class="span9">
+<div class="row-fluid">
+    <div class="span12 box">
+        <div class="box-header"><h3><i class="icon-play"></i> Lista de Partidas</h3></div>
+        <div class="box-content">
+            <div class="content-inner">
+                <div class="marg20-btm">
+                    Total de Partidas <span class="badge badge-inverse">{{partidas|length}}</span>
+                    <form class="form-inline pull-right">
+                        <input type="text" placeholder="Pesquisar partida">
+                        <input class="btn" type="submit" value="Search">
+                    </form>
+                </div>
+
+                {% if partidas %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Partida</th>
+                            <th>Resultado</th>
+                            <th>Data da partida</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% comment %} Mostrando a lista de todas partidas criadas {% endcomment %}
+                    {% for partida in partidas %}   
+                        <tr>
+                            <td><p>{{ partida.pk }}</p></td>
+                            <td><p>{{ partida.equipe1 }} vs {{ partida.equipe2 }}</p></td>
+                            <td><p>{{ partida.placar1 }} - {{ partida.placar2 }}</p></td>
+                            <td>{{ partida.data_partida }}</td>
+
+                            {% comment %} Verificar se a partida já foi realizada {% endcomment %}
+                            {% if  partida.concluido %}
+                                <td><span class="label label-success">Concuída</span></td>
+                            {% else %}
+                                <td><span class="label label-important">Pendente</span></td>                        
+                            {% endif %}
+
+                            <td><div class="btn-group">
+                                    {% if partida.concluido %}
+                                        <a class="btn btn-info" href="{% url 'blog:vencedores' partida.id %}" rel="tooltip" data-original-title="Mostrar Jogadores vencedores"><i class="icon-signal"></i> Mostrar Vencedor</a>
+                                    {% else %}
+                                        <a class="btn" href="{% url 'blog:partida' partida.id %}" rel="tooltip" data-original-title="Selecionar partida"><i class="icon-ok"></i> Selecionar</a>
+                                    {% endif %}
+                                    <a class="btn" href="{% url 'blog:vencedores' partida.id %}" rel="tooltip" data-original-title="Mais informações sobre a partida">Detalhes</a>
+
+                                  {% comment %} so actualiza se o usuario fizer parte a equipe de afministração do sistema {% endcomment %}
+                                  {% if user.is_staff %}
+                                    <a class="btn" href="{% url 'blog:partida-update' partida.id %}" rel="tooltip" data-original-title="Atualizar da partida"><i class="icon-inbox"></i> Actualizar</a>
+                                  {% endif %}  
+                                  
+                               </div>
+                            </td>
+                        </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="alert alert-info">
+                    <h3>Sem partidas adicionadas</h2>
+                </div>
+                {% endif %}
+                
+                {% comment %} Paginacao {% endcomment %}
+    <!-- Paginação -->
+    <div class="col-md-10 mb-4">
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info" href="?page=1">Primeiro</a>
+            <a class="btn btn-outline-info" href="?page={{ page_obj.previous_page_number }}">←</a>
+        {% endif %}        
+ 
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num <  page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info" href="?page={{ page_obj.next_page_number }}">→</a>
+            <a class="btn btn-outline-info" href="?page={{ page_obj.paginator.num_pages }}">Último</a>
+        {% endif %}        
+        
+    {% endif %}
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

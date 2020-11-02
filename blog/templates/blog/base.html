@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <title>Apostas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Le styles -->
+    <link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/mbooh.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/icon-style.css ' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/bootstrap-responsive.css ' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/apostas.css' %}" rel="stylesheet" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Apostas</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li><a data-toggle="modal" href="#notif"><i class="icon-white icon-inbox"></i> Crédito <span class="badge badge-info">R$ {{user.credito.valor}}</span></a></li>
+            </ul>
+            <ul class="nav pull-right">
+
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" style='font-size:14px;' data-toggle="dropdown">{{user.username}} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-user"></i> Perfil</a></li>
+                <li class="divider"></li>
+                <li><a href="{% url 'blog:sair' %}"><i class="icon-off"></i> Sair</a></li>
+              </ul>
+            </li>
+
+          </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-head">
+        <div class="container-fluid">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="partidas.html">Menu</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    {% comment %} Imprimir mensagens caso for enviada uma mensagem {% endcomment %}
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <ul class="nav nav-tabs nav-stacked">
+                    <li class="active"><a href="{% url 'blog:partidas' %}">Partidas</a></li>
+                    <li><a href="{% url 'blog:apostas' %}">Apostas</a></li>
+                    <li><a href="{% url 'blog:jogadores' %}"> Jogadores</a></li>
+
+                    {% comment %} verificar se o usuario faz parte da equipe de administração do site {% endcomment %}
+                     {% if user.is_staff %}
+                        <li><a href="/admin">Admin</a></li>
+                     {% endif %}
+
+                </ul>
+            </div>
+            
+      
+      {% block content %}
+      {% endblock content %}
+
+
+        </div> <!--// row -->
+    </div> <!--// container -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'blog/js/jquery-1.7.2.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.js' %}"></script>
+    <script src="{% static 'blog/js/mbooh.js' %}"></script>
+  </body>
+</html>

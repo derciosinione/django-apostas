@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="span6">
+    <h2>Apostar na partida de {{partida.equipe1}} vs {{partida.equipe2}}</h2>
+    <hr/>
+        <form class="form-horizontal" action="{% url 'blog:apostar' partida.id %}" method="POST">
+        {% csrf_token %}
+        <fieldset>
+
+            <div class="control-group">
+            <div class="controls">
+                <span style='margin-right: 3px;'>{{partida.equipe1}}</span> 
+                <input class="input-small" name='placar1' type="number" value="0">
+                <span style='color: #ccc;'> - </span> 
+                <input class="input-small" name='placar2' type="number" value="0">
+                <span style='margin-left: 3px;'>{{partida.equipe2}}</span> 
+            </div>
+            </div>
+
+            <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Confirmar</button>
+            <a class="btn" href="{% url 'blog:partidas' %}">Cancelar</a>
+            </div>
+        </fieldset>
+        </form>
+    </div>
+{% endblock content %}

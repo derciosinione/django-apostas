@@ -1,0 +1,103 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+<div class="span9">
+<div class="row-fluid">
+    <div class="span12 box">
+        <div class="box-header"><h3><i class="icon-play"></i> Lista de Vencedores</h3></div>
+        <div class="box-content">
+            <div class="content-inner">
+                <div class="marg20-btm">
+                <div style="margin-bottom: 10px;">
+                    {% if partida.concluido %}
+                        <span class="label label-success">Partida Concuída</span>
+                    {% else %}
+                        <span class="label label-important">Partida Pendente</span>
+                    {% endif %}
+                    |
+                    Total. Apostas <span class="badge badge-warning">{{ aposta.totApostas }}</span>
+                    | Total. Montante <span class="badge badge-info">R$ {{ aposta.totMontant}}</span>
+                    | Prêmio <span class="badge badge-success">R$ {{ aposta.premio}}</span>
+
+                </div>
+
+                    <form class="form-inline pull-right">
+                        <input type="text" placeholder="Pesquisar vencedor">
+                        <input class="btn" type="submit" value="Search">
+                    </form>
+                </div>
+
+                <h2>{{partida.equipe1}} vs {{partida.equipe2}}</h2>
+                <hr/>
+                {% comment %} Resultado Final {% endcomment %}
+                  <div class="controls">
+                    <span style='margin-right: 3px;'>{{partida.equipe1}}</span> 
+                    <input class="input-small" name='placar1' type="number" value="{{partida.placar1}}">
+                    <span style='color: #ccc;'> - </span> 
+                    <input class="input-small" name='placar2' type="number" value="{{partida.placar2}}">
+                <span style='margin-left: 3px;'>{{partida.equipe2}}</span> 
+                </div>
+
+                <br/>
+                
+                {% if vencedores %}
+                <h3>Lista de Vencedores</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID. Aposta</th>
+                            <th>Jogador</th>
+                            <th>Valor Apostado</th>
+                            <th>Prêmio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% comment %} Mostrando a lista de todas partidas criadas {% endcomment %}
+                    {% for jogador in vencedores %}   
+                        <tr>
+                            <td><p>{{ jogador.pk }}</p></td>
+                            <td><p>{{ jogador.user.username }}</p></td>
+                            <td><p>R$ {{ jogador.valor }}</p></td>
+                            <td><p>R$ {{ aposta.premio }}</p></td>
+                               </div>
+                            </td>
+                        </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="alert alert-info">
+                    <h3>Esta partida {% if not partida.concluido %} ainda {% endif %} não tem nenhum vencedor</h2>
+                </div>
+                {% endif %}
+                
+
+            {% if user.is_staff %}
+                {% if partida.concluido %}
+                    {% if not partida.encerrado %}
+                        {% if vencedores|length > 0 %}
+                            <a class="btn btn-primary" href="{% url 'blog:premiar-vencedores' partida.id %}" rel="tooltip" data-original-title="Premiar jogadores vencedores">
+                            Atribuir Prêmio</a>
+                        {% else %}
+                        <a class="btn btn-danger" href="{% url 'blog:premiar-vencedores' partida.id %}">Devolver Dinheiro</a>
+                        {% endif %}
+                    {% else %}
+                    <div class="alert alert-info">
+                        <h5>Esta partida encontra-se encerrada...</h5>
+                    </div>
+                    {% endif %}
+
+                {% else %}
+                    <a class="btn" href="{% url 'blog:partida-update' partida.id %}" rel="tooltip" data-original-title="Atualizar da partida"><i class="icon-inbox"></i> Actualizar</a>
+                {% endif %}
+            {% endif %}
+        
+        
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

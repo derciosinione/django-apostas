@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <title>Apostas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Le styles -->
+    <link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/mbooh.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/icon-style.css ' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/bootstrap-responsive.css ' %}" rel="stylesheet" />
+ 
+  </head> 
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="login.html">Apostas</a>
+        </div>
+      </div>
+    </div>
+      
+    <div class="account-container">
+	   <div class="form-content clearfix">
+
+    <form method="POST" />
+		{% csrf_token %}
+      <h1><i class="iconbig-lock"></i> Login</h1>
+            <hr class="alt" />	
+
+    {% if form.errors %}
+      <div class="alert alert-danger">
+          <p>Nome de usuário ou senha incorrecta, por favor verifique as suas credenciais.</p>
+      </div>
+    {% endif %}
+
+			<div class="login-fields">
+          <div class="field">
+          <label for="username">Usuário:</label>
+          <input type="text" id="username" name="username" value="" placeholder="Usuário" class="login username-field" required="" />
+      </div>
+
+				<div class="field">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" value="" placeholder="Senha" class="login password-field" required="" />
+				</div>
+			</div>
+
+			<div class="login-actions">
+          <span class="login-checkbox">
+            <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+            <label class="choice" for="Field">Remembrar-me</label>
+				  </span>
+
+				<input type="submit" name="submit" value="Entrar" class="btn-signin btn btn-primary" />
+        <a href="#" class="btn-signin btn">Cancelar</a>
+			</div>
+            
+            <p><a href="#">Esqueceu a senha ?</a></p>
+		  </form>
+	   </div> <!-- form-content -->
+    </div> <!-- account-container -->  
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'blog/js/jquery-1.7.2.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.js' %}"></script>
+    <script src=""{% static 'blog/js/mbooh.js' %}></script>
+
+  </body>
+</html>
