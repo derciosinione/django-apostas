@@ -1,11 +1,11 @@
 # Apostas-WebApp       
 
 <h2>Sistema de apostas</h2>
-A inspiração deste projecto vem de uma atividade muito comum em tempos de jogos de copa do mundo:
+<p>A inspiração deste projecto vem de uma atividade muito comum em tempos de jogos de copa do mundo:
 Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos da copa do mundo.
+</p>
 
-
-<h4>Part 1 (voltada ao Admin):</h4>
+## Part 1 (voltada ao Admin):
 <ol>
      <li>Cadastrar novos jogadores(Nome, Login (único), senha). Cada novo jogador recebe um crédito de R$ 10,00 automaticamente.</li>
      <li>Cadastrar Equipas</li>
@@ -14,16 +14,26 @@ Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos
      <li>Adicionar crédito aos jogadores</li>
 </ol>
 
-<h4>Part 2 (voltada ao publico):</h4>
+## Part 2 (voltada ao publico):
 <ol>
-     <li>...</li>
-     <li>...</li>
-     <li>...</li>
-     <li>...</li>
+     <li>Permitir que um jogador faça login</li>
+     <li>Depois de logar deve exibir o nome, o valor a sua disposição para apostar e a lista de todas partidas cadastradas.</li>
+     <li>Permitir que um jogador selecione e aposta em uma partida (<b>Apenas uma aposta para cada jogador por partida.) cada aposta tem o valor fixo de R$ 5,00.</b></li>
+     <li>Distribuir o prémio (total do montante de apostas) usando o seginte critério: 
+          <ul>
+               <li>
+                    O vencedor será quem acertar o resultado, se mais de um jogador acertar o resultado, o prêmio será igualmente entre eles
+               </li>
+               <li>
+               Se ninguém acertar o resultado, o dinheiro será devolvido para cada jogador. 
+               </li>
+          </ul>
+     </li>
+     <li>Listar o ranking dos jogadores cadastrados ordenados por valores ganhos.</li>
 </ol>
 
 
-<h4>Tabelas nessesárias:</h4>
+## Tabelas nessesárias:
 <ol>
      <li>Usuários</li>
      <li>Crédito</li>
@@ -52,13 +62,32 @@ Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos
     <h3>Em ordem de ver o projecto execute os comandos abaixos</h3>
 
     python manage.py makemigrations
-
     python manage.py migrate
-
     python manage.py createsuperuser
-
     python manage.py runserver
+
     
    In your web browser enter the address : http://localhost:8000 or http://127.0.0.1:8000/
 
 
+<p><img src="Screenshots/Captura%20de%20Tela%20(54).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(53).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(55).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(56).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(57).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(58).png" height="400" width="800"></p>
+png" height="400" width="800">
+<p><img src="Screenshots/Captura%20de%20Tela%20(61).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(62).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(63).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(64).png" height="400" width="800"></p>
+<p><img src="Screenshots/Captura%20de%20Tela%20(65).png" height="400" width="800"></p>
+
+
+# Suporte :
+<p>Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
+</p>
+
+<ul>
+    <li><a href="https://www.paypal.me/derciosinione"><b>PayPal</b></a></li>
+</ul>
