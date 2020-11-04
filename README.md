@@ -1,4 +1,5 @@
 # Apostas-WebApp       
+     Este é um sistema desenvolvido em Python utilizando a web Framework Django
 
 <h2>Sistema de apostas</h2>
 <p>A inspiração deste projecto vem de uma atividade muito comum em tempos de jogos de copa do mundo:
