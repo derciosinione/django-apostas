@@ -70,20 +70,6 @@ Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos
     
    In your web browser enter the address : http://localhost:8000 or http://127.0.0.1:8000/
 
-
-<!-- <p><img src="Screenshots/Captura%20de%20Tela%20(54).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(53).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(55).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(56).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(57).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(58).png" height="400" width="800"></p>
-png" height="400" width="800">
-<p><img src="Screenshots/Captura%20de%20Tela%20(61).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(62).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(63).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(64).png" height="400" width="800"></p>
-<p><img src="Screenshots/Captura%20de%20Tela%20(65).png" height="400" width="800"></p> -->
-
 ![Png](Screenshots/Captura%20de%20Tela%20(54).png)
 ![Png](Screenshots/Captura%20de%20Tela%20(53).png)
 ![Png](Screenshots/Captura%20de%20Tela%20(55).png)
