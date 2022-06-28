@@ -74,7 +74,7 @@ def Apostar(request, idpartida):
             
             partida = get_object_or_404(Partida, pk=idpartida)
             user = request.user
-            valor_fixo = 5
+            valor_fixo = 50
             
             # Verificar se o jogador tem saldo suficiente para apostar
             if user.credito.valor >= valor_fixo:

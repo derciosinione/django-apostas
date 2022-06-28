@@ -10,7 +10,7 @@ def contextVencedores(pk):
     apostadores = partida.apostas.all()
     
     premio = 0
-    valorAposta = 5
+    valorAposta = 50
     totMontant = 0
     totApostas = partida.apostas.count()
     
