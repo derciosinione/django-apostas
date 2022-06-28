@@ -125,4 +125,4 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'blog:partidas' 
 LOGIN_URL = 'blog:login'
 
-LOGOUT_REDIRECT_URL = 'blog:login'
+LOGOUT_REDIRECT_URL = 'blog:partidas'
