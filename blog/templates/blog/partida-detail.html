@@ -16,8 +16,8 @@
                     {% endif %}
                     |
                     Total. Apostas <span class="badge badge-warning">{{ aposta.totApostas }}</span>
-                    | Total. Montante <span class="badge badge-info">R$ {{ aposta.totMontant}}</span>
-                    | Prêmio <span class="badge badge-success">R$ {{ aposta.premio}}</span>
+                    | Total. Montante <span class="badge badge-info">AO {{ aposta.totMontant}}</span>
+                    | Prêmio <span class="badge badge-success">AO {{ aposta.premio}}</span>
 
                 </div>
 
@@ -57,8 +57,8 @@
                         <tr>
                             <td><p>{{ jogador.pk }}</p></td>
                             <td><p>{{ jogador.user.username }}</p></td>
-                            <td><p>R$ {{ jogador.valor }}</p></td>
-                            <td><p>R$ {{ aposta.premio }}</p></td>
+                            <td><p>AO {{ jogador.valor }}</p></td>
+                            <td><p>AO {{ aposta.premio }}</p></td>
                                </div>
                             </td>
                         </tr>

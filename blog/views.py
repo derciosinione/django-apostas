@@ -79,14 +79,13 @@ def Apostar(request, idpartida):
             # Verificar se o jogador tem saldo suficiente para apostar
             if user.credito.valor >= valor_fixo:
                 # Efectuar o desconto do credito do jogador para concluir a aposta
-                user.credito.valor -= valor_fixo
-                
+                user.credito.valor -= valor_fixo                
                 # Criar a instancia da aposta para salvar os dados na BD.
                 aposta = Aposta(user=user, partida=partida, placar1=request.POST['placar1'], placar2=request.POST['placar2']) 
                 aposta.save() # salvar a aposta.
                 user.save()
                 
-                # Criar mensagem de sucesso, pois a operação foi efectuada com sucesso.
+                # Criar mensagem de sucesso, pois a operação for efectuada com sucesso.
                 messages.success(request,f'Aposta da partida {partida.equipe1} vs {partida.equipe2} efectuada com sucesso!')
             else:
                 # Criar mensagem de erro, porque o usuario não tem valor suficiente para apostar.
@@ -104,6 +103,7 @@ def Apostar(request, idpartida):
 
 def EntregarPremio(request, pk):
     
+    mensagem = ''
     data = contextVencedores(pk)
     vencedores = data['vencedores']
     apostadores = data['apostadores']
@@ -119,11 +119,11 @@ def EntregarPremio(request, pk):
         mensagem = f'Premio distribuido para {len(vencedores)} jogador(es) com sucesso...'
 
     elif apostadores:
+        print(apostadores)
         for aposta in apostadores :
             user = aposta.user
             user.credito.valor += 5
             user.save()
-
         mensagem = f'Valor de aposta devolvido para {len(apostadores)} jogador(es) com sucesso...'
     
     #Encerrar a premiação das partidas

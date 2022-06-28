@@ -5,10 +5,10 @@ from django.urls import reverse
 
 class Credito(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    valor = models.DecimalField(default=10,max_digits=11,decimal_places=2)
+    valor = models.DecimalField(default=100,max_digits=11,decimal_places=2)
     
     def __str__(self):
-        return f'{self.user.username} - valor: R$ {self.valor}'
+        return f'{self.user.username} - valor: {self.valor} AO'
     
     
 class Equipe(models.Model):

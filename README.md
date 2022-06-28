@@ -8,7 +8,7 @@ Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos
 
 ## Part 1 (voltada ao Admin):
 <ol>
-     <li>Cadastrar novos jogadores(Nome, Login (único), senha). Cada novo jogador recebe um crédito de R$ 10,00 automaticamente.</li>
+     <li>Cadastrar novos jogadores(Nome, Login (único), senha). Cada novo jogador recebe um crédito de  10,00 AO automaticamente.</li>
      <li>Cadastrar Equipas</li>
      <li>Cadastrar Partidas</li>
      <li>Definir o resultados as partidas</li>
@@ -19,7 +19,7 @@ Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos
 <ol>
      <li>Permitir que um jogador faça login</li>
      <li>Depois de logar deve exibir o nome, o valor a sua disposição para apostar e a lista de todas partidas cadastradas.</li>
-     <li>Permitir que um jogador selecione e aposta em uma partida (<b>Apenas uma aposta para cada jogador por partida.) cada aposta tem o valor fixo de R$ 5,00.</b></li>
+     <li>Permitir que um jogador selecione e aposta em uma partida (<b>Apenas uma aposta para cada jogador por partida.) cada aposta tem o valor fixo de 5,00 AO.</b></li>
      <li>Distribuir o prémio (total do montante de apostas) usando o seginte critério: 
           <ul>
                <li>
