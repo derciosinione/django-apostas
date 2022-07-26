@@ -61,7 +61,7 @@ Apostar em um Bolão. Então implementaremos um sistema de apostas para os jogos
 
 <h2>Usuablidade :</h2>
     <h3>Em ordem de ver o projecto execute os comandos abaixos</h3>
-
+    pip install -r requiriments.txt
     python manage.py makemigrations
     python manage.py migrate
     python manage.py createsuperuser
